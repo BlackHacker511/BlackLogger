@@ -1,0 +1,10 @@
+{
+    "require": {
+        "foroco/php-browser-detection": "^2.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "Framework\\": "src/Framework"
+        }
+    }
+}

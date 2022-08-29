@@ -1,0 +1,60 @@
+{
+    "packages": [
+        {
+            "name": "foroco/php-browser-detection",
+            "version": "v2.3",
+            "version_normalized": "2.3.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/foroco/php-browser-detection.git",
+                "reference": "8c1714543b85f56d6eec19bb8263deb80922318d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/foroco/php-browser-detection/zipball/8c1714543b85f56d6eec19bb8263deb80922318d",
+                "reference": "8c1714543b85f56d6eec19bb8263deb80922318d",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "time": "2021-09-03T15:02:01+00:00",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "classmap": [
+                    "src/BrowserDetection.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Artem Murugov",
+                    "email": "murugov@gmail.com",
+                    "homepage": "https://github.com/foroco/",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Ultra fast PHP library to detect browser, OS, platform and device type by User-Agent parsing.",
+            "homepage": "https://github.com/foroco/php-browser-detection",
+            "keywords": [
+                "browser",
+                "detection",
+                "environment",
+                "php",
+                "user-agent",
+                "useragent"
+            ],
+            "support": {
+                "issues": "https://github.com/foroco/php-browser-detection/issues",
+                "source": "https://github.com/foroco/php-browser-detection/tree/v2.3"
+            },
+            "install-path": "../foroco/php-browser-detection"
+        }
+    ],
+    "dev": true,
+    "dev-package-names": []
+}

@@ -1,0 +1,133 @@
+<?php
+
+$db = new Framework\Database($config);
+$util = new Framework\Utils();
+$installer = new Framework\Migration($db, $util);
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $installer->createTable(
+        "links",
+        [
+            [
+                'id',
+                Framework\Types::Integer(),
+                Framework\Options::UnSigned(),
+                Framework\Options::NotNull(),
+                Framework\Options::AutoIncrement()
+            ],
+            [
+                'long_url',
+                Framework\Types::Text(),
+                Framework\Options::NotNull()
+            ],
+            [
+                'short_code',
+                Framework\Types::String(25),
+                Framework\Options::NotNull()
+            ],
+            [
+                'hits',
+                Framework\Types::Integer(),
+                Framework\Options::NotNull()
+            ],
+            [
+                'created_at',
+                Framework\Types::TimeStamp(),
+                Framework\Options::NotNull(),
+                Framework\Options::CurrentTimeStamp()
+            ],
+            [
+                Framework\Options::PrimaryKey('id')
+            ]
+        ]
+    );
+
+    $installer->createTable(
+        "clients",
+        [
+            [
+                'id',
+                Framework\Types::Integer(),
+                Framework\Options::UnSigned(),
+                Framework\Options::NotNull(),
+                Framework\Options::AutoIncrement()
+            ],
+            [
+                'ip_address',
+                Framework\Types::String(255),
+                Framework\Options::NotNull()
+            ],
+            [
+                'country',
+                Framework\Types::String(25),
+                Framework\Options::NotNull()
+            ],
+            [
+                'os',
+                Framework\Types::Text(),
+                Framework\Options::NotNull()
+            ],
+            [
+                'browser',
+                Framework\Types::Text(),
+                Framework\Options::NotNull(),
+            ],
+            [
+                'device',
+                Framework\Types::Text(),
+                Framework\Options::NotNull(),
+            ],
+            [
+                'created_at',
+                Framework\Types::TimeStamp(),
+                Framework\Options::NotNull(),
+            ],
+            [
+                Framework\Options::PrimaryKey('id')
+            ]
+        ]
+    );
+
+    $installer->createTable(
+        "users",
+        [
+            [
+                'id',
+                Framework\Types::Integer(),
+                Framework\Options::UnSigned(),
+                Framework\Options::NotNull(),
+                Framework\Options::AutoIncrement()
+            ],
+            [
+                'username',
+                Framework\Types::String(255),
+                Framework\Options::NotNull()
+            ],
+            [
+                'password',
+                Framework\Types::String(255),
+                Framework\Options::NotNull()
+            ],
+            [
+                'failed_login',
+                Framework\Types::Integer(),
+                Framework\Options::NotNull(),
+                Framework\Options::DefaultValue(0)
+            ],
+            [
+                'last_login',
+                Framework\Types::TimeStamp(),
+                Framework\Options::NotNull(),
+                Framework\Options::CurrentTimeStamp()
+            ],
+            [
+                Framework\Options::PrimaryKey('id')
+            ]
+        ]
+    );
+
+    $installer->insertValue("users", [
+        'username' => 'admin',
+        'password' => password_hash('admin', PASSWORD_BCRYPT),
+    ]);
+}
